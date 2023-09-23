@@ -1,0 +1,26 @@
+
+
+version: '3'
+
+services:
+  app:
+    build:
+      # context: /notejam-app
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: 127.0.0.1
+      DB_USER: subhojyoti
+      DB_PASSWORD: singha12
+      DB_DATABASE: notejam_dev
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: singha12
+      MYSQL_DATABASE: notejam_dev
+    ports: 
+      - "3306:3306"
